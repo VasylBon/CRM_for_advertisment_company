@@ -1,6 +1,10 @@
 .list-group-item {
     padding: 15px 20px;
-    border-bottom: 1px solid #3d5a80;
+    border-bottom: 1px solid #000000;
+}
+
+.done {
+    background-color: rgb(226, 255, 182);
 }
 
 .list-group-item:last-child {
@@ -19,6 +23,7 @@
     font-size: 20px;
     text-align: center;
     border: 0;
+    background-color: transparent;
 }
 
 .list-group-item button {
@@ -28,14 +33,12 @@
     font-size: 17px;
     border: none;
     cursor: pointer;
-}
-
-.list-group-item .btn-cookie {
-    color: #e09f3e;
+    background-color: transparent;
 }
 
 .list-group-item .btn-trash {
     color: #e5383b;
+    font-size: large;
 }
 
 .list-group-item .fa-star {
@@ -44,10 +47,15 @@
     text-align: center;
     line-height: 35px;
     font-size: 16px;
-    color: #FFD700;
+    color: #ffd700;
     transition: 0.3s all;
     transform: translateX(30px);
     opacity: 0;
+}
+
+.list-group-item .checked-field {
+    color: orange;
+    font-size: large;
 }
 
 .list-group-item.like .fa-star {
@@ -55,11 +63,11 @@
     transform: translateX(0px);
 }
 
-.list-group-item.increase .list-group-item-label, .list-group-item.increase .list-group-item-input {
+.list-group-item.increase .list-group-item-label,
+.list-group-item.increase .list-group-item-input {
     color: #e09f3e;
 }
-  
+
 .list-group-item.increase .btn-star {
     color: #aeaeae;
 }
-  
