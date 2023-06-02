@@ -24,7 +24,8 @@ class EmployeesListItem extends Component {
     };
 
     render() {
-        const { client, type, payment, onDelete } = this.props;
+        const { position, client, date, type, product, amount, payment, onDelete } =
+            this.props;
         const { done, like } = this.state;
 
         return (
@@ -33,15 +34,33 @@ class EmployeesListItem extends Component {
                     done ? "done" : ""
                 } ${like ? "like" : ""}`}
             >
-                <span className="list-group-item-label" onClick={this.hardWork}>
+                <span id="position" className="list-group-item-label">
+                    {position}
+                </span>
+                <span
+                    id="client"
+                    className="list-group-item-label"
+                    onClick={this.hardWork}
+                >
                     {client}
                 </span>
                 <input
-                    type="text"
+                    id="date"
+                    type="date"
                     className="list-group-item-input"
-                    defaultValue={type}
+                    defaultValue={date}
                 />
+                <span id="type" className="list-group-item-input">
+                    {type}
+                </span>
+                <span id="product" className="list-group-item-input">
+                    {product}
+                </span>
+                <span id="amount" className="list-group-item-input">
+                    {amount}
+                </span>
                 <input
+                    name="payment"
                     type="text"
                     className="list-group-item-input"
                     defaultValue={payment + "₴"}

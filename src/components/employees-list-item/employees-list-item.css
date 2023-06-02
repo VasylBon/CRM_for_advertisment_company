@@ -15,7 +15,7 @@
     line-height: 35px;
     font-size: 20px;
     cursor: pointer;
-    min-width: 550px;
+    vertical-align: middle;
 }
 
 .list-group-item input {
@@ -24,6 +24,7 @@
     text-align: center;
     border: 0;
     background-color: transparent;
+    max-width: 100px;
 }
 
 .list-group-item button {
@@ -63,11 +64,36 @@
     transform: translateX(0px);
 }
 
-.list-group-item.increase .list-group-item-label,
-.list-group-item.increase .list-group-item-input {
-    color: #e09f3e;
-}
-
 .list-group-item.increase .btn-star {
     color: #aeaeae;
+}
+
+#position {
+    min-width: 25px;
+}
+
+#client {
+    min-width: 150px;
+}
+
+#date {
+    min-width: 150px;
+}
+
+#amount {
+    min-width: 75px;
+}
+
+#type {
+    min-width: 100px;
+}
+
+#product {
+    min-width: 200px;
+    text-align: center;
+}
+
+span {
+    min-width: 175px;
+    text-align: center;
 }

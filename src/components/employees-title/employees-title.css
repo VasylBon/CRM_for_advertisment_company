@@ -1,0 +1,50 @@
+.order-info {
+    margin-top: 25px;
+    margin-bottom: 1px;
+    padding-right: 0px;
+    background-color: #f49b17;
+    border-radius: 8px 8px 0px 0px;
+    color: black;
+    height: 70px;
+}
+
+.list-group-item-label.info {
+    line-height: 35px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 0;
+    padding: 2px 2px;
+}
+
+.data-position {
+    min-width: 30px;
+}
+
+.data-client {
+    min-width: 150px;
+}
+
+.data-date {
+    min-width: 150px;
+}
+
+.data-amount {
+    min-width: 75px;
+}
+
+.data-type {
+    min-width: 100px;
+}
+
+.data-product {
+    min-width: 200px;
+    text-align: center;
+}
+
+.data-payment {
+    min-width: 90px;
+}
+
+.data-status {
+    min-width: 117px;
+}

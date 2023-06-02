@@ -1,7 +1,15 @@
 .app-info {
     padding: 25px;
-    background-color: orange;
-    border-radius: 4px;
-    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.15);
+    background-color: #f49b17;
+    border-radius: 8px;
     color: black;
+    text-align: center;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+h2 {
+    font-weight: 500;
 }
