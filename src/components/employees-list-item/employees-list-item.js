@@ -47,12 +47,9 @@ const EmployeesListItem = (props) => {
             <span id="amount" className="list-group-item-input">
                 {amount}
             </span>
-            <input
-                name="payment"
-                type="text"
-                className="list-group-item-input"
-                defaultValue={payment + "₴"}
-            />
+            <span id="payment" className="list-group-item-input">
+                {payment + "₴"}
+            </span>
             <div className="d-flex justify-content-center align-items-center">
                 <button
                     type="button"

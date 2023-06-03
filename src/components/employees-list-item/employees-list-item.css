@@ -72,10 +72,7 @@
     min-width: 25px;
 }
 
-#client {
-    min-width: 150px;
-}
-
+#client,
 #date {
     min-width: 150px;
 }
@@ -91,6 +88,10 @@
 #product {
     min-width: 200px;
     text-align: center;
+}
+
+#payment {
+    min-width: 90px;
 }
 
 span {

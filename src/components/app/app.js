@@ -51,6 +51,8 @@ class App extends Component {
                 },
             ],
             maxId: 0,
+            term: "",
+            filter: "all",
         };
         this.state.maxId = this.state.data.length;
     }
@@ -119,18 +121,62 @@ class App extends Component {
         }));
     };
 
+    searchOrder = (words, term) => {
+        if (term.length === 0) {
+            return words;
+        }
+
+        return words.filter((word) => {
+            const wordValue = word.client.toLowerCase();
+            term = term.toLowerCase();
+
+            for (let i = 0; i < term.length; ++i) {
+                if (term[i] !== wordValue[i]) {
+                    return false;
+                }
+            }
+            return true;
+        });
+    };
+
+    onUpdateSearch = (term) => {
+        this.setState({ term });
+    };
+
+    filterOrder = (data, filter) => {
+        switch (filter) {
+            case "active":
+                return data.filter((item) => item.done === false);
+            case "done":
+                return data.filter((item) => item.done === true);
+            default:
+                return data;
+        }
+    };
+
+    onUpdateFilter = (filter) => {
+        this.setState({ filter });
+    };
+
     render() {
+        const { data, term, filter } = this.state;
+        const active = this.state.data.filter(
+            (value) => value.done === false,
+        ).length;
+        const filterData = this.filterOrder(data, filter);
+        const visibleData = this.searchOrder(filterData, term);
+
         return (
             <div className="app">
-                <AppInfo maxId={this.state.maxId} data={this.state.data} />
+                <AppInfo maxId={this.state.maxId} active={active} />
                 <div className="search-panel">
-                    <SearchPanel />
-                    <AppFilter />
+                    <SearchPanel onUpdateSearch={this.onUpdateSearch} />
+                    <AppFilter onUpdateFilter={this.onUpdateFilter} />
                 </div>
 
                 <EmployeesTitle />
                 <EmployeesList
-                    data={this.state.data}
+                    data={visibleData}
                     onDelete={this.deleteItem}
                     onToggleProp={this.onToggleProp}
                 />

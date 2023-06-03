@@ -23,6 +23,42 @@ class EmployeesAddForm extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+
+        const { client, date, type, product, amount, payment } = this.state;
+
+        if (client === "" || client.length < 3) {
+            alert("Некоректо заповнене поле 'Клієнт'!");
+            return;
+        }
+
+        if (date === "") {
+            this.setState({ date: new Date().toISOString().slice(0, 10) });
+            alert(
+                "Оскільки поле 'Дата' незаповнене, автоматично підставлено сьогоднішню дату!",
+            );
+            return;
+        }
+
+        if (type === "" || type.length < 3) {
+            alert("Некоректо заповнене поле 'Вид'!");
+            return;
+        }
+
+        if (product === "" || product.length < 3) {
+            alert("Некоректо заповнене поле 'Продукція'!");
+            return;
+        }
+
+        if (amount === "" || !/^\d+$/.test(amount) || amount.length > 5) {
+            alert("Некоректо заповнене поле 'Кількість'!");
+            return;
+        }
+
+        if (payment === "" || !/^\d+$/.test(payment) || payment.length > 5) {
+            alert("Некоректо заповнене поле 'Вартість'!");
+            return;
+        }
+
         this.props.onAdd(
             this.state.client,
             this.state.date,
