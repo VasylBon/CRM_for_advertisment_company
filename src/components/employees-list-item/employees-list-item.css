@@ -42,29 +42,29 @@
     font-size: large;
 }
 
-.list-group-item .fa-star {
+.list-group-item .fa-print {
     width: 35px;
     height: 35px;
     text-align: center;
     line-height: 35px;
     font-size: 16px;
-    color: #ffd700;
+    color: #f49b17;
     transition: 0.3s all;
     transform: translateX(30px);
     opacity: 0;
 }
 
 .list-group-item .checked-field {
-    color: orange;
+    color: #f49b17;
     font-size: large;
 }
 
-.list-group-item.like .fa-star {
+.list-group-item.print .fa-print {
     opacity: 1;
     transform: translateX(0px);
 }
 
-.list-group-item.increase .btn-star {
+.list-group-item.increase .btn-print {
     color: #aeaeae;
 }
 

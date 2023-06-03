@@ -22,6 +22,7 @@ class App extends Component {
                     amount: 1000,
                     payment: 550,
                     done: false,
+                    print: true,
                     id: 1,
                 },
                 {
@@ -33,6 +34,7 @@ class App extends Component {
                     amount: 1,
                     payment: 200,
                     done: false,
+                    print: false,
                     id: 2,
                 },
                 {
@@ -44,6 +46,7 @@ class App extends Component {
                     amount: 1,
                     payment: 300,
                     done: false,
+                    print: false,
                     id: 3,
                 },
             ],
@@ -78,6 +81,7 @@ class App extends Component {
             amount,
             payment,
             done: false,
+            print: false,
             id: this.state.maxId + 1,
         };
         this.setState(({ data }) => {
@@ -89,17 +93,47 @@ class App extends Component {
         });
     };
 
+    onToggleProp = (id, prop) => {
+        /*this.setState(({ data }) => {
+            const index = data.findIndex((elem) => elem.id === id);
+
+            const old = data[index];
+            const newItem = { ...old, done: !old.done };
+            const newArr = [
+                ...data.slice(0, index),
+                newItem,
+                ...data.slice(index + 1),
+            ];
+
+            return {
+                data: newArr,
+            };
+        });*/
+        this.setState(({ data }) => ({
+            data: data.map((item) => {
+                if (item.id === id) {
+                    return { ...item, [prop]: !item[prop] };
+                }
+                return item;
+            }),
+        }));
+    };
+
     render() {
         return (
             <div className="app">
-                <AppInfo />
+                <AppInfo maxId={this.state.maxId} data={this.state.data} />
                 <div className="search-panel">
                     <SearchPanel />
                     <AppFilter />
                 </div>
 
                 <EmployeesTitle />
-                <EmployeesList data={this.state.data} onDelete={this.deleteItem} />
+                <EmployeesList
+                    data={this.state.data}
+                    onDelete={this.deleteItem}
+                    onToggleProp={this.onToggleProp}
+                />
                 <EmployeesAddForm onAdd={this.addItem} />
             </div>
         );
