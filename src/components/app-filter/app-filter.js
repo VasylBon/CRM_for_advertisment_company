@@ -1,54 +1,28 @@
-import React, { Component } from "react";
 import "./app-filter.css";
 
-class AppFilter extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            filter: "all",
-        };
-    }
+const AppFilter = (props) => {
+    const buttonsData = [
+        { name: "all", label: "Всі замовлення" },
+        { name: "active", label: "Активні" },
+        { name: "done", label: "Завершені" },
+    ];
 
-    onUpdateFilter = (changedFilter) => {
-        this.setState({ filter: changedFilter });
-        this.props.onUpdateFilter(changedFilter);
-    };
-
-    render() {
-        const { filter } = this.state;
-
+    const buttons = buttonsData.map(({ name, label }) => {
+        const active = props.filter === name;
+        const clazz = active ? "btn-dark" : "btn-light";
         return (
-            <div className="btn-group">
-                <button
-                    className={`btn ${
-                        filter === "all" ? "btn-dark" : "btn btn-light"
-                    } `}
-                    type="button"
-                    onClick={() => this.onUpdateFilter("all")}
-                >
-                    Всі замовлення
-                </button>
-                <button
-                    className={`btn ${
-                        filter === "active" ? "btn-dark" : "btn btn-light"
-                    } `}
-                    type="button"
-                    onClick={() => this.onUpdateFilter("active")}
-                >
-                    Активні
-                </button>
-                <button
-                    className={`btn ${
-                        filter === "done" ? "btn-dark" : "btn btn-light"
-                    } `}
-                    type="button"
-                    onClick={() => this.onUpdateFilter("done")}
-                >
-                    Завершені
-                </button>
-            </div>
+            <button
+                className={`btn ${clazz}`}
+                type="button"
+                key={name}
+                onClick={() => props.onUpdateFilter(name)}
+            >
+                {label}
+            </button>
         );
-    }
-}
+    });
+
+    return <div className="btn-group">{buttons}</div>;
+};
 
 export default AppFilter;

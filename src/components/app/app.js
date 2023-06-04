@@ -7,7 +7,9 @@ import EmployeesList from "../employees-list/employees-list";
 import EmployeesTitle from "../employees-title/employees-title";
 import SearchPanel from "../search-panel/search-panel";
 
+import logo from "../../img/logo.gif";
 import "./app.css";
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -53,6 +55,7 @@ class App extends Component {
             maxId: 0,
             term: "",
             filter: "all",
+            loading: true,
         };
         this.state.maxId = this.state.data.length;
     }
@@ -72,6 +75,12 @@ class App extends Component {
             };
         });
     };
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({ loading: false });
+        }, 2500);
+    }
 
     addItem = (client, date, type, product, amount, payment) => {
         const newItem = {
@@ -159,28 +168,40 @@ class App extends Component {
     };
 
     render() {
-        const { data, term, filter } = this.state;
+        const { data, term, filter, loading } = this.state;
         const active = this.state.data.filter(
             (value) => value.done === false,
         ).length;
-        const filterData = this.filterOrder(data, filter);
-        const visibleData = this.searchOrder(filterData, term);
+        const visibleData = this.filterOrder(this.searchOrder(data, term), filter);
 
         return (
             <div className="app">
-                <AppInfo maxId={this.state.maxId} active={active} />
-                <div className="search-panel">
-                    <SearchPanel onUpdateSearch={this.onUpdateSearch} />
-                    <AppFilter onUpdateFilter={this.onUpdateFilter} />
-                </div>
+                {loading && (
+                    <div className="loader">
+                        <img src={logo} alt="logo" />
+                    </div>
+                )}
 
-                <EmployeesTitle />
-                <EmployeesList
-                    data={visibleData}
-                    onDelete={this.deleteItem}
-                    onToggleProp={this.onToggleProp}
-                />
-                <EmployeesAddForm onAdd={this.addItem} />
+                {!loading && (
+                    <>
+                        <AppInfo maxId={this.state.maxId} active={active} />
+                        <div className="search-panel">
+                            <SearchPanel onUpdateSearch={this.onUpdateSearch} />
+                            <AppFilter
+                                filter={filter}
+                                onUpdateFilter={this.onUpdateFilter}
+                            />
+                        </div>
+
+                        <EmployeesTitle />
+                        <EmployeesList
+                            data={visibleData}
+                            onDelete={this.deleteItem}
+                            onToggleProp={this.onToggleProp}
+                        />
+                        <EmployeesAddForm onAdd={this.addItem} />
+                    </>
+                )}
             </div>
         );
     }
