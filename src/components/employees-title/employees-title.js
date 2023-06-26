@@ -1,4 +1,4 @@
-import "./employees-title.css";
+import "./employees-title.scss";
 
 const EmployeesTitle = () => {
     return (

@@ -1,4 +1,4 @@
-import "./employees-list-item.css";
+import "./employees-list-item.scss";
 
 const EmployeesListItem = (props) => {
     const {
@@ -21,7 +21,10 @@ const EmployeesListItem = (props) => {
                 done ? "done" : ""
             } ${print ? "print" : ""}`}
         >
-            <span id="position" className="list-group-item-label">
+            <span
+                id="position"
+                className="list-group-item-label"
+            >
                 {position}
             </span>
             <span
@@ -38,16 +41,28 @@ const EmployeesListItem = (props) => {
                 className="list-group-item-input"
                 defaultValue={date}
             />
-            <span id="type" className="list-group-item-input">
+            <span
+                id="type"
+                className="list-group-item-input"
+            >
                 {type}
             </span>
-            <span id="product" className="list-group-item-input">
+            <span
+                id="product"
+                className="list-group-item-input"
+            >
                 {product}
             </span>
-            <span id="amount" className="list-group-item-input">
+            <span
+                id="amount"
+                className="list-group-item-input"
+            >
                 {amount}
             </span>
-            <span id="payment" className="list-group-item-input">
+            <span
+                id="payment"
+                className="list-group-item-input"
+            >
                 {payment + "₴"}
             </span>
             <div className="d-flex justify-content-center align-items-center">
